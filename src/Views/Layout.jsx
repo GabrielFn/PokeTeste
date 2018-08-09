@@ -1,21 +1,30 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import red from '@material-ui/core/colors/red';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+import Header from '../Components/Header/Header';
 import "./Layout.css";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: red,
+  },
+});
+  
 
 class Layout extends React.Component {
     render() {
         return (
-            <div>
-                <div className="base-header"></div>
-                <div className="content-wrapper">
-                    { this.props.children }
-                </div>
-                <div className="bottom">
-                    <div className="texto">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <MuiThemeProvider theme={theme}>
+                <div>
+                    <Header />
+                
+                    <div className="content-wrapper">
+                        {this.props.children}
                     </div>
                 </div>
-            </div>
+            </MuiThemeProvider>
         );
     }
 }

@@ -1,4 +1,4 @@
-import ListaPersonagens from './ListaPersonagens/Redux';
+import Catalogo from './Catalogo/Redux';
 export default {
-    ListaPersonagens
+    Catalogo
 }

@@ -1,6 +1,6 @@
 {
-  "short_name": "ApiMarvel",
-  "name": "Personagens Marvel",
+  "short_name": "PokeTeste",
+  "name": "Pokedex",
   "icons": [
     {
       "src": "favicon.ico",

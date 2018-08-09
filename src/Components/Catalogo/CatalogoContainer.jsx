@@ -1,16 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-
 import { isEmpty } from '../../Utils/ValidationUtils';
 import { consultarPersonagens } from "./Redux";
 
-class ListaPersonagensContainer extends React.Component {
+class CatalogoContainer extends React.Component {
     componentDidMount() {
         this.props.consultarPersonagens();
     }
 
     render() {
-        console.log(this.props.personagensState);
+        console.log(this.props.catalogoState);
 
         return (
             <div></div>
@@ -20,10 +19,10 @@ class ListaPersonagensContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        personagensState: state.ListaPersonagens
+        catalogoState: state.Catalogo
     };
 };
 
 export default connect(mapStateToProps, { 
     consultarPersonagens
-})(ListaPersonagensContainer);
+})(CatalogoContainer);
