@@ -1,21 +1,19 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
+
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+
 import DrawerComponent from './Drawer';
 
 const drawerWidth = 260;
 
-const styles = theme => ({
+const styles = theme => (console.log('theme', theme), {
     root: {
         flexGrow: 1,
-    },
-    appFrame: {
-        height: 430,
+        height: "100%",
         zIndex: 1,
         overflow: 'hidden',
         position: 'relative',
@@ -24,70 +22,29 @@ const styles = theme => ({
     },
     appBar: {
         position: 'absolute',
-        transition: theme.transitions.create(['margin', 'width'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-    },
-    appBarShift: {
+        marginLeft: drawerWidth,
         [theme.breakpoints.up('md')]: {
             width: `calc(100% - ${drawerWidth}px)`,
         },
-        transition: theme.transitions.create(['margin', 'width'], {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
     },
-    'appBarShift-left': {
+    navIconHide: {
         [theme.breakpoints.up('md')]: {
-            marginLeft: drawerWidth
-        }
+            display: 'none',
+        },
     },
-    menuButton: {
-        marginLeft: 12,
-        marginRight: 20,
-    },
-    hide: {
-        display: 'none',
-    },
+    toolbar: theme.mixins.toolbar,
     drawerPaper: {
-        position: 'relative',
         width: drawerWidth,
-    },
-    drawerHeader: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        padding: '0 8px',
-        ...theme.mixins.toolbar,
+        [theme.breakpoints.up('md')]: {
+            position: 'relative',
+        },
+        backgroundColor: theme.palette.primary.main
     },
     content: {
         flexGrow: 1,
         backgroundColor: theme.palette.background.default,
-        padding: theme.spacing.unit * 3,
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-    },
-    'content-left': {
-        marginLeft: -drawerWidth,
-    },
-    'content-right': {
-        marginRight: -drawerWidth,
-    },
-    contentShift: {
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    'contentShift-left': {
-        marginLeft: 0,
-    },
-    'contentShift-right': {
-        marginRight: 0,
-    },
+        padding: theme.spacing.unit * 3
+    }
 });
 
 class Header extends React.Component {
@@ -109,22 +66,25 @@ class Header extends React.Component {
 
     render() {
         const { open } = this.state;
-        const { classes, theme } = this.props;
-
+        const { classes } = this.props;
         return (
-            <div>
-                <AppBar position="static" className={classNames(classes.appBar, {
-                    [classes.appBarShift]: open,
-                    [classes[`appBarShift-left`]]: open,
-                })}>
+            <div className={classes.root}>
+                <AppBar className={`${classes.appBar} base-header-mobile`}>
                     <Toolbar>
-                        <IconButton color="inherit" aria-label="Menu" onClick={this.handleDrawer}>
+                        <IconButton
+                            color="inherit"
+                            aria-label="Abrir Menu"
+                            onClick={this.handleDrawer}
+                            className={classes.navIconHide}>
                             <MenuIcon />
                         </IconButton>
-                        <div className="base-header"></div>
                     </Toolbar>
                 </AppBar>
-                <DrawerComponent classes={ classes } handleDrawer={ this.handleDrawer } open={ open } />
+                <DrawerComponent classes={classes} handleDrawer={this.handleDrawer} open={open} />
+                <main className={classes.content}>
+                    <div className={classes.toolbar}></div>
+                    {this.props.children}
+                </main>
             </div>
         )
     }

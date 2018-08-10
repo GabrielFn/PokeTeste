@@ -1,4 +1,4 @@
-import Catalogo from './Catalogo/Redux';
+import BuscaPokemon from './BuscaPokemon/Redux';
 export default {
-    Catalogo
+    BuscaPokemon
 }

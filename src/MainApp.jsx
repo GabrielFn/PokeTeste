@@ -1,19 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from './Store/CreateStore';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { store, history } from './Store/CreateStore';
 
 import Layout from './Views/Layout';
-import CatalogoView from './Views/Catalogo/CatalogoView';
+import PublicRoutes from './Routes/Public';
 
 const MainApp = () => (
     <Provider store={store}>
         <Layout>
-            <BrowserRouter>
-                <Switch>
-                    <Route exact path="/" component={CatalogoView} />
-                </Switch>
-            </BrowserRouter>
+            <PublicRoutes history={history} />
         </Layout>
     </Provider>
 );

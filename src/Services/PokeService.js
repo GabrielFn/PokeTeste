@@ -1,8 +1,8 @@
 import axios from '../Utils/Axios';
 
 class PokeService {
-  consultarPersonagens() {
-    return axios.get(`/evolution-chain/?limit=20&offset=20`);
+  buscarPokemon(identificador) {
+    return axios.get(`/pokemon/${identificador}`);
   }
 }
 

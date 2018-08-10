@@ -18,11 +18,9 @@ class Layout extends React.Component {
         return (
             <MuiThemeProvider theme={theme}>
                 <div>
-                    <Header />
-                
-                    <div className="content-wrapper">
+                    <Header>
                         {this.props.children}
-                    </div>
+                    </Header>
                 </div>
             </MuiThemeProvider>
         );
