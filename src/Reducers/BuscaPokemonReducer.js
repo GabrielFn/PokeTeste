@@ -32,8 +32,6 @@ function buscaPokemonError(state, action) {
 }
 
 export default function buscaPokemonReducer(state = initialState, action) {
-  console.log('Passou no reducer', action);
-
   switch (action.type) {
     case BUSCA_POKEMON_REQUEST: return buscaPokemonRequest(state, action);
     case BUSCA_POKEMON_SUCCESS: return buscaPokemonSuccess(state, action);

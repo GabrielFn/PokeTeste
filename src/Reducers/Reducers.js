@@ -1,8 +1,8 @@
 import BuscaPokemon from './BuscaPokemonReducer';
 import Controle from './ControleReducer';
-import Catalogo from './CatalogoReducer';
+import Moves from './MovesReducer';
 export default {
     BuscaPokemon,
     Controle,
-    Catalogo
+    Moves
 }

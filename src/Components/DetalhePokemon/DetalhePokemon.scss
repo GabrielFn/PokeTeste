@@ -1,0 +1,36 @@
+.container-atributo {
+    text-align: center;
+
+    p {
+        margin-bottom: 0;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-top: 10px;
+        text-transform: capitalize;
+    }
+
+    span {
+        text-transform: capitalize;
+    }
+}
+
+.moves-container {
+    height: 140px;
+    overflow: hidden;   
+
+    .moves-scroll{
+        overflow-y: scroll;
+        height: 100%;
+        padding-right: 17px;
+        box-sizing: content-box;
+
+        .move-item {
+            text-align: center;
+            text-transform: capitalize;
+        }
+    }
+}
+
+.voltar-detalhe {
+    margin-top: 15px;
+}

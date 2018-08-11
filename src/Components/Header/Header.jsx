@@ -10,7 +10,7 @@ import DrawerComponent from './Drawer';
 
 const drawerWidth = 260;
 
-const styles = theme => (console.log('theme', theme), {
+const styles = theme => ({
     root: {
         flexGrow: 1,
         height: "100%",

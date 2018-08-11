@@ -9,7 +9,7 @@ class Box extends React.Component {
             <Grid container className="box-container">
                 <Grid container>
                     <Grid item>
-                        <Typography variant="display2" gutterBottom>
+                        <Typography variant="display2" className="box-title">
                             {this.props.title}
                         </Typography>
                     </Grid>

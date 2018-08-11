@@ -6,11 +6,12 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { capitalizeFirstLetter } from '../../../Utils/ValidationUtils';
+import { capitalizeFirstLetter } from '../../../Utils/FormatUtils';
+import history from '../../../Utils/BrowserHistory';
 
-const CardPokemon = ({ dados, capturarPokemon }) => {
+const CardPokemon = ({ dados, capturarPokemon, excluirPokemon }) => {
     return (
-        <Grid item lg={4} md={5} sm={6} xs={12}>
+        <Grid item lg={4} md={4} sm={6} xs={12}>
             <Card>
                 <CardMedia
                     className="media"
@@ -24,7 +25,7 @@ const CardPokemon = ({ dados, capturarPokemon }) => {
                         <b>Type(s): </b>
                         {
                             dados.types.map((type, i) => {
-                                return `${capitalizeFirstLetter(type.type.name)}${(dados.types.length - 1 != i) ? ",": ""}`
+                                return `${capitalizeFirstLetter(type.type.name)}${(dados.types.length - 1 !== i) ? ", ": ""}`
                             })
                         }
                     </Typography>
@@ -34,12 +35,18 @@ const CardPokemon = ({ dados, capturarPokemon }) => {
                 </CardContent>
                 <CardActions>
                     {
-                        capturarPokemon &&
+                        !dados.catalogado && capturarPokemon &&
                         <Button size="small" color="primary" onClick={ () => capturarPokemon(dados.id) }>
                             Capturar
                         </Button>
                     }
-                    <Button size="small" color="primary">
+                    {
+                        dados.catalogado && excluirPokemon &&
+                        <Button size="small" color="primary" onClick={ () => excluirPokemon(dados.id) }>
+                            Excluir
+                        </Button>
+                    }
+                    <Button size="small" color="primary" onClick={ () => history.push(`/detalhe/${dados.id}`) }>
                         Detalhes
                     </Button>
                 </CardActions>

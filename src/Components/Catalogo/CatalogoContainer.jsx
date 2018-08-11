@@ -3,16 +3,22 @@ import { connect } from "react-redux";
 
 import Box from '../Shared/Box/Box';
 import CatalogoList from './CatalogoList';
+import { excluirPokemon } from '../../Reducers/ControleReducer';
 
 class CatalogoContainer extends React.Component {
     render() {
-        let pokemons = this.props.catalogoState.pokemons.map((id, index) => {
-            return this.props.controleState.items.find(item => item.data.id === id)
-        })
 
+        const pokemons = this.props.controleState.items.filter(item =>
+            item.data.catalogado);
+        
         return (
             <Box title="Pokémons Capturados">
-                <CatalogoList pokemons={pokemons} />
+            {
+                pokemons.length > 0 ?
+                <CatalogoList pokemons={pokemons}
+                              excluirPokemon={ this.props.excluirPokemon } /> :
+                "Você ainda não capturou nenhum pokémon!"
+            }
             </Box>
         );
     }
@@ -20,9 +26,10 @@ class CatalogoContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        catalogoState: state.Catalogo,
         controleState: state.Controle
     }
 }
 
-export default connect(mapStateToProps)(CatalogoContainer);
+export default connect(mapStateToProps, {
+    excluirPokemon
+})(CatalogoContainer);

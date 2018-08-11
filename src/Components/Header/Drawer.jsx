@@ -70,7 +70,8 @@ const DrawerSmDown = ({ handleDrawer, classes, open }) => {
                 open
                 classes={{
                     paper: classes.drawerPaper,
-                }}>
+                }}
+                style={{height: "100%"}}>
                 <div className={`${classes.toolbar} base-header`}></div>
                 <Divider />
                 <List>

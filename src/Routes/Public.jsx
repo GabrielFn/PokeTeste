@@ -4,6 +4,7 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import CatalogoView from '../Views/Catalogo/CatalogoView';
 import BuscaPokemonView from '../Views/BuscaPokemon/BuscaPokemonView';
+import DetalhePokemonView from '../Views/DetalhePokemon/DetalhePokemonView';
 
 const PublicRoutes = ({ history }) => (
     <ConnectedRouter history={ history }>
@@ -12,13 +13,15 @@ const PublicRoutes = ({ history }) => (
                 <Route
                     exact
                     path="/"
-                    component={CatalogoView}
-                />
+                    component={CatalogoView} />
                 <Route
                     exact
                     path="/busca"
-                    component={BuscaPokemonView}
-                />
+                    component={BuscaPokemonView} />
+                <Route
+                    exact
+                    path="/detalhe/:id"
+                    component={DetalhePokemonView} />
             </Switch>
         </div>
     </ConnectedRouter>

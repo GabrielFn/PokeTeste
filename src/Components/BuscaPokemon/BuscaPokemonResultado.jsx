@@ -2,7 +2,7 @@ import React from 'react';
 import { isEmpty } from '../../Utils/ValidationUtils';
 import CardPokemon from '../Shared/CardPokemon/CardPokemon';
 
-const BuscaPokemonResultado = ({ dados, primeiroAcesso, capturarPokemon }) => {
+const BuscaPokemonResultado = ({ dados, primeiroAcesso, capturarPokemon, excluirPokemon }) => {
 
     let component = "";
 
@@ -12,7 +12,7 @@ const BuscaPokemonResultado = ({ dados, primeiroAcesso, capturarPokemon }) => {
         }
     }
     else {
-        component = <CardPokemon dados={dados} capturarPokemon={capturarPokemon} />
+        component = <CardPokemon dados={dados.data} capturarPokemon={capturarPokemon} excluirPokemon={excluirPokemon} />
     }
 
     return (
