@@ -6,7 +6,7 @@ import './Box.css';
 class Box extends React.Component {
     render() {
         return (
-            <Grid container spacing={8} className="box-container">
+            <Grid container className="box-container">
                 <Grid container>
                     <Grid item>
                         <Typography variant="display2" gutterBottom>
@@ -14,7 +14,7 @@ class Box extends React.Component {
                         </Typography>
                     </Grid>
                 </Grid>
-                <Grid container>
+                <Grid container spacing={8}>
                     { this.props.children }
                 </Grid>
             </Grid>

@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
 import debounce from 'lodash/debounce';
 import TextField from '@material-ui/core/TextField';
 import { isEmpty } from '../../../Utils/ValidationUtils';
@@ -19,9 +20,7 @@ class Busca extends React.Component {
     handleChange(e) {
         const val = e.target.value;
         this.setState({ value: val }, () => {
-            if (!isEmpty(val)){
-                this.changed(val);
-            }
+            this.changed(val);
         });
     }
 

@@ -2,7 +2,7 @@ import {
   BUSCA_POKEMON_REQUEST,
   BUSCA_POKEMON_SUCCESS,
   BUSCA_POKEMON_ERROR  
-} from './Constants';
+} from '../Constants/BuscaPokemonConstants';
 
 const initialState = {
   loading: false,
@@ -26,7 +26,8 @@ function buscaPokemonSuccess(state, action) {
 function buscaPokemonError(state, action) {
   return { ...state, ...{
     loading: false,
-    erro: action.message
+    erro: action.message,
+    dataSource: []
   }}
 }
 

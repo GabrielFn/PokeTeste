@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 
 import Box from '../Shared/Box/Box';
 import Busca from '../Shared/Busca/Busca';
-import { buscaPokemon } from './Redux';
 import Loading from '../Shared/Loading/Loading';
 import BuscaPokemonResultado from './BuscaPokemonResultado';
+import { isEmpty } from '../../Utils/ValidationUtils';
+import { buscaPokemon } from '../../Reducers/BuscaPokemonReducer';
+import { capturarPokemon } from '../../Reducers/CatalogoReducer';
 import './BuscaPokemon.css';
 
 class BuscaContainer extends React.Component {
@@ -21,21 +23,22 @@ class BuscaContainer extends React.Component {
     }
 
     handleBusca(identificador) {
-        this.props.buscaPokemon(identificador);
-        this.setState({ primeiroAcesso: false });
+        if(!isEmpty(identificador)){
+            this.props.buscaPokemon(identificador);
+            this.setState({ primeiroAcesso: false });
+        }
     }
 
     render() {
-        console.log('Valor da busca pokemon', this.props.stateBusca);
-
         return (
             <Box title="Buscar Pokémons">
-                <Busca handleBusca={ this.handleBusca } placeholder="Busca" />
+                <Busca handleBusca={ this.handleBusca } placeholder="ID ou Nome do Pokémon" />
                 {
                     this.props.stateBusca.loading ?
                     <Loading /> :
                     <BuscaPokemonResultado dados={this.props.stateBusca.dataSource.data} 
-                                           primeiroAcesso={this.state.primeiroAcesso} />
+                                           primeiroAcesso={this.state.primeiroAcesso}
+                                           capturarPokemon={ this.props.capturarPokemon } />
                 }
             </Box>
         )
@@ -44,10 +47,12 @@ class BuscaContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        stateBusca: state.BuscaPokemon
+        stateBusca: state.BuscaPokemon,
+        stateControle: state.Controle
     }
 }
 
 export default connect(mapStateToProps, {
-    buscaPokemon
+    buscaPokemon,
+    capturarPokemon
 })(BuscaContainer);
