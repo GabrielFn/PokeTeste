@@ -6,7 +6,7 @@ import {
     BUSCA_MOVE_ERROR
 } from '../Constants/BuscaMoveConstants';
 
-function* fetchMove(action) {
+export function* fetchMove(action) {
     try{
         const data = yield call(pokeService.buscarMove, action.moveName);
         

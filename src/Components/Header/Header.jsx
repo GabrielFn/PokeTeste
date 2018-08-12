@@ -38,7 +38,7 @@ const styles = theme => ({
         [theme.breakpoints.up('md')]: {
             position: 'relative',
         },
-        backgroundColor: theme.palette.primary.main
+        backgroundColor: theme.palette.primary.main,
     },
     content: {
         flexGrow: 1,

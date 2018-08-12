@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import { Link } from "react-router-dom";
 
 const DetalhePokemon = ({ dados }) => {
     return (
@@ -15,7 +16,7 @@ const DetalhePokemon = ({ dados }) => {
                             <span>
                                 {
                                     dados.types.map((type, i) => {
-                                        return `${type.type.name}${(dados.types.length - 1 !== i) ? ", " : ""}`
+                                        return <Link key={i} to={`/pokemons/${type.type.name}`}>{`${type.type.name}${(dados.types.length - 1 !== i) ? ", " : ""}`}</Link>
                                     })
                                 }
                             </span>

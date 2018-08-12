@@ -8,6 +8,11 @@ class PokeService {
   buscarMove(moveName) {
     return axios.get(`/move/${moveName}`);
   }
+
+  buscarPokemonsTipo(tipo) {
+    return axios.get(`/type/${tipo}`);
+  }
+
 }
 
 export default new PokeService();

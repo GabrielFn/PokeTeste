@@ -64,14 +64,13 @@ const DrawerMdUp = ({ handleDrawer, classes, open }) => {
 
 const DrawerSmDown = ({ handleDrawer, classes, open }) => {
     return (
-        <Hidden smDown implementation="css">
+        <Hidden smDown implementation="css" className="menu-lateral">
             <Drawer
                 variant="permanent"
                 open
                 classes={{
                     paper: classes.drawerPaper,
-                }}
-                style={{height: "100%"}}>
+                }}>
                 <div className={`${classes.toolbar} base-header`}></div>
                 <Divider />
                 <List>

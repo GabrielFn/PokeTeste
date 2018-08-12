@@ -29,9 +29,6 @@ class MovesPokemonContainer extends React.Component {
     }
 
     render() {
-
-        console.log(this.props.moveState);
-
         return (
             <Grid container spacing={8}>
                 <Grid item lg={12} md={12} sm={12} xs={12}>

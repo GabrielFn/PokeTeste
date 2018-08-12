@@ -11,12 +11,15 @@ import {
     ADICIONA_POKEMON_ITEM
 } from '../Constants/ControleConstants';
 
-function* fetchPokemon(action) {
+export function verificaDuplicacao(state, data) {
+    return find(state.Controle.items, item => item.data.id === data.data.id);
+}
+
+export function* fetchPokemon(action) {
     try{
         const data = yield call(pokeService.buscarPokemon, action.identificador);
 
-        const isDuplicated = yield select(state =>
-            find(state.Controle.items, item => item.data.id === data.data.id));
+        const isDuplicated = yield select(verificaDuplicacao, data);
         
         let catalogado = undefined;
 

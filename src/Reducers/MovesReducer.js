@@ -6,7 +6,8 @@ import {
   
   const initialState = {
     loading: false,
-    dataSource: []
+    dataSource: [],
+    erro: ""
   };
   
   function buscaMoveRequest(state, action) {

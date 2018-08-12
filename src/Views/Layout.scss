@@ -1,3 +1,4 @@
+
 body {
     margin: 0px;
     background-color: #edeef0;
@@ -7,6 +8,16 @@ body {
 
 .content-wrapper {
     min-height: 100%;
+}
+
+.menu-lateral {
+    background-color: #f44336;
+}
+
+.voltar {
+    margin-top: 15px;
+    display: block;
+    width: 100%;
 }
 
 @media (max-width: 960px) {
