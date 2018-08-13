@@ -5,8 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { withStyles } from '@material-ui/core/styles';
-
 import DrawerComponent from './Drawer';
+import browserHistory from '../../Utils/BrowserHistory';
 
 const drawerWidth = 260;
 
@@ -56,12 +56,21 @@ class Header extends React.Component {
         }
 
         this.handleDrawer = this.handleDrawer.bind(this);
+        this.redirecionar = this.redirecionar.bind(this);
     }
 
     handleDrawer() {
         this.setState({
             open: !this.state.open
         })
+    }
+
+    redirecionar(caminho, mobile) {
+        if(mobile){
+            this.handleDrawer();
+        }
+        
+        browserHistory.push(caminho)
     }
 
     render() {
@@ -80,7 +89,7 @@ class Header extends React.Component {
                         </IconButton>
                     </Toolbar>
                 </AppBar>
-                <DrawerComponent classes={classes} handleDrawer={this.handleDrawer} open={open} />
+                <DrawerComponent classes={classes} handleDrawer={this.handleDrawer} open={open} redirecionar={this.redirecionar}/>
                 <main className={classes.content}>
                     <div className={classes.toolbar}></div>
                     {this.props.children}

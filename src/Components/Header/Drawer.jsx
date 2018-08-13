@@ -9,8 +9,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/Inbox';
 import SearchIcon from '@material-ui/icons/Search';
 
-import browserHistory from '../../Utils/BrowserHistory';
-
 const menu = [
     {
         text: "Catalogo",
@@ -24,16 +22,16 @@ const menu = [
     }
 ]
 
-const DrawerComponent = ({ handleDrawer, classes, open }) => {
+const DrawerComponent = ({ handleDrawer, classes, open, redirecionar }) => {
     return (
         <React.Fragment>
-            <DrawerMdUp handleDrawer={handleDrawer} classes={classes} open={open} />
-            <DrawerSmDown handleDrawer={handleDrawer} classes={classes} open={open} />
+            <DrawerMdUp handleDrawer={handleDrawer} classes={classes} open={open} redirecionar={ redirecionar } />
+            <DrawerSmDown handleDrawer={handleDrawer} classes={classes} open={open} redirecionar={ redirecionar } />
         </React.Fragment>
     )
 }
 
-const DrawerMdUp = ({ handleDrawer, classes, open }) => {
+const DrawerMdUp = ({ handleDrawer, classes, open, redirecionar }) => {
     return (
         <Hidden mdUp>
             <Drawer
@@ -52,7 +50,7 @@ const DrawerMdUp = ({ handleDrawer, classes, open }) => {
                 <List>
                     {
                         menu.map((item, i) => {
-                            return <DrawerListItem key={i} dados={item} />
+                            return <DrawerListItem key={i} dados={item} redirecionar={redirecionar} mobile={true} />
                         })
                     }
 
@@ -62,7 +60,7 @@ const DrawerMdUp = ({ handleDrawer, classes, open }) => {
     )
 }
 
-const DrawerSmDown = ({ handleDrawer, classes, open }) => {
+const DrawerSmDown = ({ handleDrawer, classes, open, redirecionar }) => {
     return (
         <Hidden smDown implementation="css" className="menu-lateral">
             <Drawer
@@ -77,7 +75,7 @@ const DrawerSmDown = ({ handleDrawer, classes, open }) => {
                     {
                         menu.map((item, i) => {
                             return (
-                                <DrawerListItem key={i} dados={item} />
+                                <DrawerListItem key={i} dados={item} redirecionar={redirecionar} mobile={false} />
                             )
                         })
                     }
@@ -87,9 +85,9 @@ const DrawerSmDown = ({ handleDrawer, classes, open }) => {
     )
 }
 
-const DrawerListItem = ({ dados }) => {
+const DrawerListItem = ({ dados, redirecionar, mobile }) => {
     return (
-        <ListItem button onClick={ () => browserHistory.push(dados.redirect) }>
+        <ListItem button onClick={ () => redirecionar(dados.redirect, mobile) }>
             <ListItemIcon>
                 {dados.icon}
             </ListItemIcon>
